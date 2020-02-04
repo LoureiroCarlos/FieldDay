@@ -45,6 +45,8 @@ def checkChange(original_ip):
 	else:
 		return	True
 
+# Queries the user for the email information for sender email and receiver email
+# Currently not in use
 def queryUser():
 	print('Please type the  email address to send the message from:')
 	global sender_email
@@ -69,11 +71,14 @@ def queryUser():
 
 
 if __name__ =='__main__':
+	# retrieves the email information from the environment variables
 	sender_email=os.environ.get('TER_MAIL')
 	sender_pass=os.environ.get('TER_MAIL_PASS')
 	receiver_email=os.environ.get('MAIL')
+	# defines the time interval between checking for ip changes
 	time_interval = 18000 #Time in sec.     1 hour = 3600 sec 
 	orig_ip=getIp()
+	# main loop
 	while True:
 		if checkChange(orig_ip):
 			orig_ip=getIp()
